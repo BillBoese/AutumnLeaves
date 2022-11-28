@@ -4,11 +4,11 @@ var myColors = []
 
 var x = 0;
 
-var fps = 30;
+var fps = 10;
 
-var capturer;
+//var capturer;
 // the canvas capturer instance
-capturer = new CCapture( {  format: 'webm',  fps,  name: 'fll_webm',  quality: 100,} );
+//capturer = new CCapture( {  format: 'webm',  fps,  name: 'fll_webm',  quality: 100,} );
 
 function preload(){
   img = loadImage('fall_tree_shrunk.jpg');
@@ -16,7 +16,7 @@ function preload(){
 
 function setup() {
   createCanvas(762,1108);
-  //frameRate(fps);  // I had to comment out frameRate to get the capture to work
+  frameRate(fps);  // I had to comment out frameRate to get the capture to work
  //capturer.start();
   //console.log("Started capturer")
   
@@ -35,15 +35,14 @@ function draw() {
   image(img, 0,0,img.width,img.height)
   makeSprites();
   drawSprites();
-   console.log('capturing frame');
-  capturer.capture(document.getElementById('defaultCanvas0'));
+//   console.log('capturing frame');
+//  capturer.capture(document.getElementById('defaultCanvas0'));
 }
 
 function makeSprites(){
  
   groupOf = new Group ();
  // for (var x = 0; x < 2; x++){
- //   sprite[x] = createSprite(width / 2 + (x*20) , height / 2 + (x*20), 100, 100);
     sprite[x] = createSprite(370 + random(-200,280) , 450 ,6,8);
     let c = random(myColors)
     sprite[x].shapeColor = [random(255), random(255), random(255)];
@@ -57,13 +56,13 @@ function makeSprites(){
 }
 
 
-function mouseClicked (){
-  capturer.start();
-  console.log("Started capturer")
+//function mouseClicked (){
+ // capturer.start();
+//  console.log("Started capturer")
+//
+//}
 
-}
-
-function keyPressed(){
-  capturer.stop();
-  capturer.save();
-}
+//function keyPressed(){
+ // capturer.stop();
+ // capturer.save();
+//}
